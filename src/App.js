@@ -7,6 +7,7 @@ import Calender from './Pages/Calender';
 import Footer from './Pages/Shared/Footer/Footer';
 import ToDoTaskList from './Pages/ToDoTaskList/ToDoTaskList';
 import EditToDo from './Pages/ToDoTaskList/EditToDo';
+import Error from './Pages/Shared/404/Error';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/calender" element={<Calender />} />
         <Route path="/toDoTaskList" element={<ToDoTaskList />} />
         <Route path="/editToDo/:id" element={<EditToDo />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer/>
     </div>

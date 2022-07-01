@@ -6,7 +6,7 @@ import { FiFacebook, FiLinkedin, FiGithub, FiUser } from 'react-icons/fi';
 
 const Footer = () => {
     return (
-        <footer className='bg-black py-12 lg:px-14 mt-20'>
+        <footer className='bg-black scroll-m-3 py-12 lg:px-14 mt-20'>
             <div className="container mx-auto">
                 <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 items-center justify-between">
                     <div className="flex space-x-6 items-center justify-center">
