@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CompletedTask = () => {
+
+    const [completedTaskList, setCompletedTaskList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/completed')
+            .then(res => res.json())
+            .then(data => setCompletedTaskList(data));
+    }, [])
+
     return (
         <div className='w-fit mx-auto my-10'>
             <h1>Your Completed Tasks!</h1>
@@ -17,57 +26,22 @@ const CompletedTask = () => {
                     </thead>
                     <tbody>
                         {/* <!-- row 1 --> */}
-                        <tr>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 2 --> */}
-                        <tr>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 3 --> */}
-                        <tr>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 4 --> */}
-                        <tr>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
+                        {
+                            completedTaskList.map(completedTask =>
+                                <tr>
+                                    <td>
+                                        <div class="font-bold">{completedTask.date}</div>
+                                    </td>
+                                    <td>
+                                        <p>{completedTask.time}</p>
+                                    </td>
+                                    <td title={completedTask.task}>{completedTask.task.slice(0, 20)} ...</td>
+                                    <th>
+                                        <button class="btn btn-ghost btn-xs">Edit Task</button>
+                                    </th>
+                                </tr>
+                            )
+                        }
                     </tbody>
 
                 </table>

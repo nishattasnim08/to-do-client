@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ToDoTaskList = () => {
+
+    const [toDoList, setToDoList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/todo')
+            .then(res => res.json())
+            .then(data => setToDoList(data));
+    }, [])
+
     return (
         <div className='w-fit mx-auto my-10'>
             <h1>Your To Do List!</h1>
@@ -10,9 +19,7 @@ const ToDoTaskList = () => {
                     <thead>
                         <tr className='text-center'>
                             <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
+                                Checked
                             </th>
                             <th>Date</th>
                             <th>Time</th>
@@ -22,77 +29,28 @@ const ToDoTaskList = () => {
                     </thead>
                     <tbody>
                         {/* <!-- row 1 --> */}
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 2 --> */}
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 3 --> */}
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
-                        {/* <!-- row 4 --> */}
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>
-                                <div class="font-bold">01-06-2022</div>
-                            </td>
-                            <td>
-                                <p>1:30 pm</p>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, distinctio?</td>
-                            <th>
-                                <button class="btn btn-ghost btn-xs">Edit Task</button>
-                            </th>
-                        </tr>
+                        {
+                            toDoList.map(toDo =>
+                                <tr>
+                                    <th>
+                                        <label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <div class="font-bold">{toDo.date}</div>
+                                    </td>
+                                    <td>
+                                        <p>{toDo.time}</p>
+                                    </td>
+                                    <td title={toDo.task}>{toDo.task.slice(0,20)} ...</td>
+                                    <th>
+                                        <button class="btn btn-ghost btn-xs">Edit Task</button>
+                                    </th>
+                                </tr>
+                            )
+                        }
+
                     </tbody>
 
                 </table>
