@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navber = () => {
     const navMenu = <>
         <li><Link to={'/completedTask'}>Completed Tasks</Link></li>
-        <li><a>To-Do</a></li>
+        <li><Link to={'/toDoTaskList'}>To-Do</Link></li>
         <li><Link to={'/calender'}>Calendar</Link></li>
     </>
     return (

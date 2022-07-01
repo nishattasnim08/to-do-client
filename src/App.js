@@ -5,15 +5,17 @@ import Navber from './Pages/Shared/Navber/Navber';
 import CompletedTask from './Pages/CompletedTask';
 import Calender from './Pages/Calender';
 import Footer from './Pages/Shared/Footer/Footer';
+import ToDoTaskList from './Pages/ToDoTaskList/ToDoTaskList';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navber/>
-      <Routes className="App lg:mx-14">
+      <Routes className="lg:mx-14">
         <Route path="/" element={<Home />} />
         <Route path="/completedTask" element={<CompletedTask />} />
         <Route path="/calender" element={<Calender />} />
+        <Route path="/toDoTaskList" element={<ToDoTaskList />} />
       </Routes>
       <Footer/>
     </div>

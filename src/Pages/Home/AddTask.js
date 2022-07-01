@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddTask = () => {
     return (
-        <div className='w-1/4 mx-auto'>
+        <div className='w-1/4 mx-auto my-10'>
             <h1>Add Your Task</h1>
             <div>
                 <div className="form-control w-full max-w-xs">
