@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from './Pages/Home/Home';
 import Navber from './Pages/Shared/Navber/Navber';
 import CompletedTask from './Pages/CompletedTask';
+import Calender from './Pages/Calender';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/completedTask" element={<CompletedTask />} />
+        <Route path="/calender" element={<Calender />} />
       </Routes>
     </div>
   );

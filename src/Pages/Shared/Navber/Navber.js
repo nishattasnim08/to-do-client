@@ -5,7 +5,7 @@ const Navber = () => {
     const navMenu = <>
         <li><Link to={'/completedTask'}>Completed Tasks</Link></li>
         <li><a>To-Do</a></li>
-        <li><a>Calendar</a></li>
+        <li><Link to={'/calender'}>Calendar</Link></li>
     </>
     return (
         <div class="navbar bg-base-100  lg:mb-6 lg:pt-6">
