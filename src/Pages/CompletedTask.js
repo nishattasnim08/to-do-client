@@ -36,9 +36,6 @@ const CompletedTask = () => {
                                         <p>{completedTask.time}</p>
                                     </td>
                                     <td title={completedTask.task}>{completedTask.task.slice(0, 20)} ...</td>
-                                    <th>
-                                        <button class="btn btn-ghost btn-xs">Edit Task</button>
-                                    </th>
                                 </tr>
                             )
                         }

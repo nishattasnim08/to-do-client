@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ToDoTaskList = () => {
 
     const [toDoList, setToDoList] = useState([]);
+    const nevigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/todo')
             .then(res => res.json())
             .then(data => setToDoList(data));
     }, [])
+
+
+    const handleCompletedTask = (id) => {
+        const completed = true;
+        fetch(`http://localhost:5000/task/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ completed }),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+
+            nevigate('/completedTask');
+    };
+
 
     return (
         <div className='w-fit mx-auto my-10'>
@@ -34,7 +51,7 @@ const ToDoTaskList = () => {
                                 <tr>
                                     <th>
                                         <label>
-                                            <input type="checkbox" class="checkbox" />
+                                            <input onClick={() => handleCompletedTask(toDo._id)} type="checkbox" class="checkbox" />
                                         </label>
                                     </th>
                                     <td>
@@ -43,9 +60,9 @@ const ToDoTaskList = () => {
                                     <td>
                                         <p>{toDo.time}</p>
                                     </td>
-                                    <td title={toDo.task}>{toDo.task.slice(0,20)} ...</td>
+                                    <td title={toDo.task}>{toDo.task.slice(0, 20)} ...</td>
                                     <th>
-                                        <button class="btn btn-ghost btn-xs">Edit Task</button>
+                                        <button onClick={()=>nevigate(`/editToDo/${toDo._id}`)} class="btn btn-ghost btn-xs">Edit Task</button>
                                     </th>
                                 </tr>
                             )

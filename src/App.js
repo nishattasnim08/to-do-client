@@ -17,7 +17,7 @@ function App() {
         <Route path="/completedTask" element={<CompletedTask />} />
         <Route path="/calender" element={<Calender />} />
         <Route path="/toDoTaskList" element={<ToDoTaskList />} />
-        <Route path="/editToDo" element={<EditToDo />} />
+        <Route path="/editToDo/:id" element={<EditToDo />} />
       </Routes>
       <Footer/>
     </div>
