@@ -9,7 +9,7 @@ const Calender = () => {
 
     return (
         <div>
-            <div className='lg:w-1/2 mx-auto'>
+            <div className='lg:w-1/4 mx-auto'>
                 <DayPicker
                     mode="single"
                     selected={date}
