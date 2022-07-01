@@ -3,8 +3,8 @@ import React from 'react';
 const ToDoTaskList = () => {
     return (
         <div className='w-fit mx-auto my-10'>
-            <h1>Your To Do List</h1>
-            <div class="overflow-x-auto w-full">
+            <h1>Your To Do List!</h1>
+            <div class="overflow-x-auto w-full my-10">
                 <table class="table w-full">
                     {/* <!-- head --> */}
                     <thead>
