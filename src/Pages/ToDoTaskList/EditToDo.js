@@ -12,7 +12,7 @@ const EditToDo = () => {
     const nevigate = useNavigate();
 
 
-    
+
     const handleToDo = () => {
         // event.preventDefault();
         const completed = false;
@@ -21,7 +21,7 @@ const EditToDo = () => {
 
 
 
-        fetch(`http://localhost:5000/editTask/${id}`, {
+        fetch(`https://francophone-marks-90063.herokuapp.com/editTask/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -29,7 +29,7 @@ const EditToDo = () => {
             .then((res) => res.json())
             .then((data) => console.log(data));
 
-            nevigate('/toDoTaskList');
+        nevigate('/toDoTaskList');
 
     }
 

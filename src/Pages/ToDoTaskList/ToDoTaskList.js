@@ -7,7 +7,7 @@ const ToDoTaskList = () => {
     const nevigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/todo')
+        fetch('https://francophone-marks-90063.herokuapp.com/todo')
             .then(res => res.json())
             .then(data => setToDoList(data));
     }, [])
@@ -15,7 +15,7 @@ const ToDoTaskList = () => {
 
     const handleCompletedTask = (id) => {
         const completed = true;
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://francophone-marks-90063.herokuapp.com/task/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ completed }),
@@ -23,7 +23,7 @@ const ToDoTaskList = () => {
             .then((res) => res.json())
             .then((data) => console.log(data));
 
-            nevigate('/completedTask');
+        nevigate('/completedTask');
     };
 
 
@@ -62,7 +62,7 @@ const ToDoTaskList = () => {
                                     </td>
                                     <td title={toDo.task}>{toDo.task.slice(0, 20)} ...</td>
                                     <th>
-                                        <button onClick={()=>nevigate(`/editToDo/${toDo._id}`)} class="btn btn-ghost btn-xs">Edit Task</button>
+                                        <button onClick={() => nevigate(`/editToDo/${toDo._id}`)} class="btn btn-ghost btn-xs">Edit Task</button>
                                     </th>
                                 </tr>
                             )
