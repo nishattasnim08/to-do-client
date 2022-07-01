@@ -4,16 +4,18 @@ import Home from './Pages/Home/Home';
 import Navber from './Pages/Shared/Navber/Navber';
 import CompletedTask from './Pages/CompletedTask';
 import Calender from './Pages/Calender';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
-    <div className="App lg:mx-14">
+    <div>
       <Navber/>
-      <Routes>
+      <Routes className="App lg:mx-14">
         <Route path="/" element={<Home />} />
         <Route path="/completedTask" element={<CompletedTask />} />
         <Route path="/calender" element={<Calender />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
